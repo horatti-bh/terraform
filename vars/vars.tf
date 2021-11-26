@@ -1,8 +1,24 @@
-variable "num" {
+variable "number" {
 //  type = string
-  de = 77
+  default = 77
 }
 
-output "num" {
-  value = var.num
+output "number" {
+  value = var.number
+}
+
+variable "string" {
+  default = "TF"
+}
+
+output "string" {
+  value = var.string
+}
+
+variable "boolean" {
+  default = "true"
+}
+
+output "boolean" {
+  value = var.boolean
 }
