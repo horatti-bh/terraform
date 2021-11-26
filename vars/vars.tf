@@ -1,6 +1,6 @@
 variable "num" {
 //  type = string
-  default = 77
+  de = 77
 }
 
 output "num" {
