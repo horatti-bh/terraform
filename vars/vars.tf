@@ -16,7 +16,7 @@ output "string" {
 }
 
 variable "boolean" {
-  default = 0
+  default = true
 }
 
 output "boolean" {
@@ -24,7 +24,11 @@ output "boolean" {
 }
 
 variable "list" {
-  default = ["jenkins", "ansible", "chef", "100", "true"]
+  default = ["jenkins",
+            "ansible",
+             "chef",
+              "100",
+              "true"]
 }
 
 output "list" {
