@@ -24,9 +24,29 @@ output "boolean" {
 }
 
 variable "list" {
-  default = ["jenkins", "ansible", "chef", "100", "true"]
+  default = ["jenkins", 77, "chef", "100", "true"]
 }
 
 output "list" {
   value = var.list
+}
+output "first" {
+  value = var.list[0]
+}
+
+variable "ITS" {
+  default = {
+     NAME = "improve"
+     IN   = 7
+     WHERE = "any"
+
+  }
+}
+
+output "var_check" {
+  value = var.ITS
+}
+
+output "MY_LUCKY_NU" {
+  value = var.ITS["IN"]
 }
