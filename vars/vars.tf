@@ -16,9 +16,17 @@ output "string" {
 }
 
 variable "boolean" {
-  default = "true"
+  default = 0
 }
 
 output "boolean" {
   value = var.boolean
+}
+
+variable "list" {
+  default = ["jenkins", "ansible", "chef", "100", "true"]
+}
+
+output "list" {
+  value = var.list
 }
