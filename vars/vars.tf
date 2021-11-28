@@ -24,11 +24,7 @@ output "boolean" {
 }
 
 variable "list" {
-  default = ["jenkins",
-            "ansible",
-             "chef",
-              "100",
-              "true"]
+  default = ["jenkins", "ansible", "chef", "100", "true"]
 }
 
 output "list" {
