@@ -1,5 +1,5 @@
 variable "URL" {
-  default = "google.com"
+  default = "gooooogle.com"
 }
 
 resource "null_resource" "test" {
