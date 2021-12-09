@@ -1,5 +1,5 @@
 resource "aws_instance" "instance" {
-  count                  = length(var.COMPONENT)
+  count                  = length(var.COMPONENTS)
   ami                    = data.aws_ami.instance.id
   instance_type          = "t3.micro"
   vpc_security_group_ids = ["sg-08eee104cf5e5f8fd"]
