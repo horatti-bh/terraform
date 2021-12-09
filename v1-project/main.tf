@@ -1,5 +1,5 @@
 resource "aws_instance" "instance" {
-  count                  = 1
+  count                  = length(var.COMPONENT)
   ami                    = data.aws_ami.instance.id
   instance_type          = "t3.micro"
   vpc_security_group_ids = ["sg-08eee104cf5e5f8fd"]
@@ -13,6 +13,7 @@ resource "aws_instance" "instance" {
     inline = [
       "sudo yum install ansible -y",
       "echo localhost >/tmp/hosts",
-       "ansible-pull -i /tmp/hosts -U https://${var.GIT_USER}:${var.GIT_PASS}@github.com/horatti-bh/ansible-project.git setup.yml -t frontend"]
+       "ansible-pull -i /tmp/hosts -U https://${var.GIT_USER}:${var.GIT_PASS}@github.com/horatti-bh/ansible-project.git setup.yml -t ${element(var.COMPONENTS, count.index)}"
+    ]
   }
 }
