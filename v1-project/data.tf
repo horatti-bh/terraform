@@ -1,5 +1,5 @@
 data "aws_ami" "instance" {
    name_regex  = "^Cent"
    most_recent = true
-   owners      = ["self"]
+   owners      = ["973714476881"]
 }
