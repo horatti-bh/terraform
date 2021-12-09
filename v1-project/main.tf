@@ -4,6 +4,9 @@ resource "aws_instance" "instance" {
   instance_type          = "t3.micro"
   vpc_security_group_ids = ["sg-08eee104cf5e5f8fd"]
   iam_instance_profile   = "ec2-s3-admin-access-role"
+  tags                   = {
+     Name                = element(var.COMPONENTS, count.index)
+  }
   provisioner "remote-exec" {
     connection {
       host = self.public_ip
