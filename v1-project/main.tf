@@ -22,10 +22,10 @@ resource "aws_instance" "instance" {
 }
 
 resource "aws_route53_record" "all" {
-  count                  = length(var.COMPONENTS)
+  count   = length(var.COMPONENTS)
   zone_id = "Z07536541ZG5UC6G7FHUC"
-  name    = "$element(var.COMPONENTS, count.index).devops.internal"
+  name    = "${element(var.COMPONENTS, count.index)}.devops.internal"
   type    = "A"
   ttl     = "300"
-  records = [element(aws_instance.instance.private_ip, count.index, )]
+  records = [element(aws_instance.instance.*.private_ip, count.index )]
 }
