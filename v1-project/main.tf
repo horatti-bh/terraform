@@ -16,7 +16,7 @@ resource "aws_instance" "instance" {
     inline = [
       "sudo yum install ansible -y",
       "echo localhost >/tmp/hosts",
-       "ansible-pull -i /tmp/hosts -U https://${var.GIT_USER}:${var.GIT_PASS}@github.com/horatti-bh/ansible-project.git setup.yml -t ${element(var.COMPONENTS, count.index)}"
+      "ansible-pull -i /tmp/hosts -U https://${var.GIT_USER}:${var.GIT_PASS}@github.com/horatti-bh/ansible-project.git setup.yml -t ${element(var.COMPONENTS, count.index)} -e RABBITMQ_HOST=rabbitmq.${var.DOMAIN_NAME} -e CATALOGUE_HOST=catalogue.${var.DOMAIN_NAME} -e MYSQL_HOST=mysql.${var.DOMAIN_NAME} -e USER_HOST=user.${var.DOMAIN_NAME} -e CART_HOST=cart.${var.DOMAIN_NAME} -e SHIPPING_HOST=shipping.${var.DOMAIN_NAME} -e PAYMENT_HOST=payment.${var.DOMAIN_NAME} -e RATINGS_HOST=ratings.${var.DOMAIN_NAME} -e REDIS_HOST=redis.${var.DOMAIN_NAME} -e MONGO_HOST=mongodb.${var.DOMAIN_NAME}"
     ]
   }
 }
@@ -24,7 +24,7 @@ resource "aws_instance" "instance" {
 resource "aws_route53_record" "all" {
   count   = length(var.COMPONENTS)
   zone_id = "Z07536541ZG5UC6G7FHUC"
-  name    = "${element(var.COMPONENTS, count.index)}.devops.internal"
+  name    = "${element(var.COMPONENTS, count.index)}.${var.DOMAIN_NAME}"
   type    = "A"
   ttl     = "300"
   records = [element(aws_instance.instance.*.private_ip, count.index )]

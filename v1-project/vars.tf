@@ -5,3 +5,6 @@ variable "SSH_PASS" {}
 variable "COMPONENTS" {
   default = [ "frontend", "dispatch", "payment", "ratings", "shipping", "user", "catalogue", "cart", "rabbitmq", "mysql", "redis", "mongodb"]
 }
+variable "DOMAIN_NAME" {
+  default = "devops.internal"
+}
